@@ -19,7 +19,7 @@ Cette SAE 2.03 est une application web de gestion du trafic aérien entre diffé
 
    Sur Windows, utilisez
 
-       ```sh
+    ```sh
     env\Scripts\activate`  #
     ````
     
