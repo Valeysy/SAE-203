@@ -14,8 +14,15 @@ Cette SAE 2.03 est une application web de gestion du trafic aérien entre diffé
 1. Activez un environnement virtuel :
 
     ```sh
-    source env/bin/activate  # Sur Windows, utilisez `env\Scripts\activate`
+    source env/bin/activate  #
     ```
+
+   Sur Windows, utilisez
+
+       ```sh
+    env\Scripts\activate`  #
+    ````
+    
 
 3. Installez les dépendances :
 
