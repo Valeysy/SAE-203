@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<img class="avion" src="/static/gestion/images/avion.png">
+<h1>Gestionnaire de trafic aérien</h1>
+<p></p>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Aéroports</h5>
+                <p class="card-text">Ajoutez, modifiez ou supprimez des informations sur les aéroports.</p>
+                <a href="{% url 'list_aeroports' %}" class="btn-a">Voir les Aéroports</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Pistes</h5>
+                <p class="card-text">Administrez les pistes pour chaque aéroport dans le système.</p>
+                <a href="{% url 'list_pistes' %}" class="btn-a">Voir les Pistes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Compagnies</h5>
+                <p class="card-text">Gérez les informations relatives aux compagnies aériennes.</p>
+                <a href="{% url 'list_compagnies' %}" class="btn-a">Voir les Compagnies</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Types d'Avions</h5>
+                <p class="card-text">Consultez et gérez les types d'avions disponibles.</p>
+                <a href="{% url 'list_types_avions' %}" class="btn-a">Voir les Types d'Avions</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Avions</h5>
+                <p class="card-text">Accédez à la liste des avions et modifiez leurs informations.</p>
+                <a href="{% url 'list_avions' %}" class="btn-a">Voir les Avions</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Vols</h5>
+                <p class="card-text">Organisez et planifiez les vols à partir de toutes les informations saisies.</p>
+                <a href="{% url 'list_vols' %}" class="btn-a">Voir les Vols</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

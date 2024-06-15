@@ -1,0 +1,22 @@
+###### /etc/nginx/sites-available/gestion_aerien ######
+
+server {
+    listen 80;
+    server_name _;
+
+    location = /favicon.ico {
+        alias /home/toto/gestion_aerien/src/gestion/static/images/favicon.svg;
+        access_log off;
+        log_not_found off;
+    }
+    location /static/ {
+        root /home/toto/gestion_aerien/src/gestion;
+    }
+
+    location /media/ {
+        root /home/toto/gestion_aerien/src;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/toto/gestion_aerien/src/gestion_aerien.sock;

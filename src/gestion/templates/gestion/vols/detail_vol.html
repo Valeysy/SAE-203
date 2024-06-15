@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block nav_links %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_aeroports' %}">Aéroports</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_pistes' %}">Pistes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_compagnies' %}">Compagnies</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_types_avions' %}">Types d'Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_avions' %}">Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-b" href="{% url 'list_vols' %}">Vols</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'vol_fiche' %}">Fiche des Vols</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2>Détails du vol</h2>
+<table class="table">
+    <tr>
+        <th>Avion</th>
+        <td>{{ vol.avion.nom }}</td>
+    </tr>
+    <tr>
+        <th>Pilote</th>
+        <td>{{ vol.pilote }}</td>
+    </tr>
+    <tr>
+        <th>Aéroport de Départ</th>
+        <td>{{ vol.aeroport_depart.nom }}</td>
+    </tr>
+    <tr>
+        <th>Date et Heure de Départ</th>
+        <td>{{ vol.date_heure_depart|date:"Y-m-d H:i" }}</td>
+    </tr>
+    <tr>
+        <th>Aéroport d'Arrivée</th>
+        <td>{{ vol.aeroport_arrivee.nom }}</td>
+    </tr>
+    <tr>
+        <th>Date et Heure d'Arrivée</th>
+        <td>{{ vol.date_heure_arrivee|date:"Y-m-d H:i" }}</td>
+    </tr>
+</table>
+<a href="{% url 'list_vols' %}" class="btn">Retour à la liste</a>
+{% endblock %}

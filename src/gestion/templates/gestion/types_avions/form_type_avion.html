@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block nav_links %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_aeroports' %}">Aéroports</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_pistes' %}">Pistes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_compagnies' %}">Compagnies</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-b" href="{% url 'list_types_avions' %}">Types d'Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_avions' %}">Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_vols' %}">Vols</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'vol_fiche' %}">Fiche des Vols</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2>{% if type_avion.id %}Modifier{% else %}Ajouter{% endif %} un type d'avion</h2>
+<form method="post" enctype="multipart/form-data" class="mt-4">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_marque">Marque</label>
+        <input type="text" class="form-control" id="id_marque" name="marque" value="{{ form.marque.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_modele">Modèle</label>
+        <input type="text" class="form-control" id="id_modele" name="modele" value="{{ form.modele.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_description">Description</label>
+        <textarea class="form-control" id="id_description" name="description">{{ form.description.value|default_if_none:'' }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="id_longueur_piste_necessaire">Longueur de Piste Nécessaire</label>
+        <input type="text" class="form-control" id="id_longueur_piste_necessaire" name="longueur_piste_necessaire" value="{{ form.longueur_piste_necessaire.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_image">Image</label>
+        <input type="file" class="form-control-file" id="id_image" name="image">
+    </div>
+    <button type="submit" class="btn">Sauvegarder</button>
+    <a href="{% url 'list_types_avions' %}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

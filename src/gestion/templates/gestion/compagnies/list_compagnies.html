@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block nav_links %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_aeroports' %}">Aéroports</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_pistes' %}">Pistes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-b" href="{% url 'list_compagnies' %}">Compagnies</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_types_avions' %}">Types d'Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_avions' %}">Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_vols' %}">Vols</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'vol_fiche' %}">Fiche des Vols</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2>Liste des Compagnies</h2>
+<a href="{% url 'add_compagnie' %}" class="btn">Ajouter une compagnie</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Pays de rattachement</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for compagnie in compagnies %}
+        <tr>
+            <td>{{ compagnie.nom }}</td>
+            <td>{{ compagnie.description }}</td>
+            <td>{{ compagnie.pays_attache }}</td>
+            <td>
+                <a href="{% url 'view_compagnie' compagnie.id %}" class="btn">Voir</a>
+                <a href="{% url 'edit_compagnie' compagnie.id %}" class="btn">Modifier</a>
+                <a href="{% url 'delete_compagnie' compagnie.id %}" class="btn">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

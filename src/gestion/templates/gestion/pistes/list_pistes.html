@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block nav_links %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_aeroports' %}">Aéroports</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-b" href="{% url 'list_pistes' %}">Pistes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_compagnies' %}">Compagnies</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_types_avions' %}">Types d'Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_avions' %}">Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_vols' %}">Vols</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'vol_fiche' %}">Fiche des Vols</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2>Liste des Pistes</h2>
+<a href="{% url 'add_piste' %}" class="btn">Ajouter une piste</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numéro</th>
+            <th>Aéroport</th>
+            <th>Longueur (mètres)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for piste in pistes %}
+        <tr>
+            <td>{{ piste.numero }}</td>
+            <td>{{ piste.aeroport.nom }}</td>
+            <td>{{ piste.longueur }}</td>
+            <td>
+                <a href="{% url 'view_piste' piste.id %}" class="btn">Voir</a>
+                <a href="{% url 'edit_piste' piste.id %}" class="btn">Modifier</a>
+                <a href="{% url 'delete_piste' piste.id %}" class="btn">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

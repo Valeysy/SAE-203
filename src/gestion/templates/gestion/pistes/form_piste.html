@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block nav_links %}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_aeroports' %}">Aéroports</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-b" href="{% url 'list_pistes' %}">Pistes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_compagnies' %}">Compagnies</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_types_avions' %}">Types d'Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_avions' %}">Avions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'list_vols' %}">Vols</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'vol_fiche' %}">Fiche des Vols</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2>{% if piste.id %}Modifier{% else %}Ajouter{% endif %} une piste</h2>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_numero">Numéro</label>
+        <input type="text" class="form-control" id="id_numero" name="numero" value="{{ form.numero.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_aeroport">Aéroport</label>
+        <select class="form-control" id="id_aeroport" name="aeroport">
+            {% for aeroport in form.aeroport.field.queryset %}
+                <option value="{{ aeroport.id }}" {% if form.aeroport.value == aeroport.id %}selected{% endif %}>{{ aeroport.nom }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id_longueur">Longueur</label>
+        <input type="text" class="form-control" id="id_longueur" name="longueur" value="{{ form.longueur.value|default_if_none:'' }}">
+    </div>
+    <button type="submit" class="btn">Sauvegarder</button>
+    <a href="{% url 'list_pistes' %}" class="btn">Annuler</a>
+</form>
+{% endblock %}
